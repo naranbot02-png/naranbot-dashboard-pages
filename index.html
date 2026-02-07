@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Naranbot Dashboard</title>
+    <style>
+      :root{color-scheme:dark; --bg:#0b1020; --card:#0f172a; --mut:#94a3b8; --fg:#e5e7eb; --ok:#22c55e; --bad:#ef4444; --warn:#f59e0b;}
+      html,body{height:100%; margin:0; background:var(--bg); color:var(--fg); font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;}
+      a{color:#93c5fd}
+      .wrap{max-width:980px; margin:0 auto; padding:20px;}
+      .row{display:grid; grid-template-columns:1fr; gap:12px;}
+      @media(min-width:900px){.row{grid-template-columns:1fr 1fr}}
+      .card{background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.10); border-radius:14px; padding:14px 14px;}
+      h1{margin:0 0 8px 0; font-size:20px}
+      .sub{color:var(--mut); font-size:13px}
+      .k{color:var(--mut)}
+      .pill{display:inline-block; padding:2px 8px; border:1px solid rgba(255,255,255,.14); border-radius:999px; margin-right:6px; font-size:12px}
+      pre{white-space:pre-wrap; word-break:break-word; background:rgba(0,0,0,.25); padding:10px; border-radius:10px; border:1px solid rgba(255,255,255,.08)}
+      .ok{color:var(--ok)} .bad{color:var(--bad)} .warn{color:var(--warn)}
+      button{background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14); color:var(--fg); padding:6px 10px; border-radius:10px; cursor:pointer}
+    </style>
+    <script type="module" crossorigin src="/naranbot-dashboard/assets/index-BIdy4Ojh.js"></script>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>Naranbot Dashboard</h1>
+      <div class="sub">Actualiza leyendo <code>status.json</code> (generado por tu máquina). <button id="btn">Actualizar</button></div>
+
+      <div style="height:10px"></div>
+
+      <div class="row">
+        <div class="card">
+          <div class="pill">Gateway: <span id="gateway">…</span></div>
+          <div class="pill">Versión: <span id="version">…</span></div>
+          <div class="pill">Modelo: <span id="model">…</span></div>
+          <div style="margin-top:8px" class="k">Última actualización: <span id="updated">…</span></div>
+          <div style="margin-top:8px" class="k">Notas: Este panel no puede ver “uso exacto por modelo” de ChatGPT (oauth). Muestra métricas del gateway y contadores locales.</div>
+        </div>
+
+        <div class="card">
+          <div class="pill">Mensajes hoy (aprox): <span id="msgs">…</span></div>
+          <div class="pill">Ticks light hoy: <span id="light">…</span></div>
+          <div class="pill">Ticks smart hoy: <span id="smart">…</span></div>
+          <div style="margin-top:8px" class="k">Alertas: <span id="alerts">…</span></div>
+        </div>
+
+        <div class="card">
+          <div><b>Repos</b></div>
+          <ul id="repos"></ul>
+        </div>
+
+        <div class="card">
+          <div><b>Últimos eventos</b> <span class="k">(máx 30)</span></div>
+          <pre id="events">Cargando…</pre>
+        </div>
+      </div>
+
+      <div style="height:16px"></div>
+      <div class="card">
+        <div><b>Raw status.json</b></div>
+        <pre id="raw"></pre>
+      </div>
+    </div>
+
+  </body>
+</html>

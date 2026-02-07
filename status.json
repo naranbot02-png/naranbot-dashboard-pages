@@ -1,0 +1,12 @@
+{
+  "updatedAt": "1970-01-01T00:00:00.000Z",
+  "gateway": {"status": "unknown", "version": ""},
+  "model": {"current": ""},
+  "counters": {"messagesToday": 0, "tickLightToday": 0, "tickSmartToday": 0},
+  "alerts": [],
+  "repos": [
+    {"name": "tierra-del-fuego-3", "url": "https://github.com/naranbot02-png/tierra-del-fuego-3", "pages": "https://naranbot02-png.github.io/tierra-del-fuego-3/"},
+    {"name": "threejs-platformer-mobile", "url": "https://github.com/naranbot02-png/threejs-platformer-mobile", "pages": "https://naranbot02-png.github.io/threejs-platformer-mobile/"}
+  ],
+  "events": []
+}
