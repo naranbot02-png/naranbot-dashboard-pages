@@ -5,58 +5,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Naranbot Dashboard</title>
     <style>
-      :root{color-scheme:dark; --bg:#0b1020; --card:#0f172a; --mut:#94a3b8; --fg:#e5e7eb; --ok:#22c55e; --bad:#ef4444; --warn:#f59e0b;}
-      html,body{height:100%; margin:0; background:var(--bg); color:var(--fg); font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;}
+      :root{
+        color-scheme:dark;
+        --bg:#0b1020;
+        --fg:#e5e7eb;
+        --mut:#94a3b8;
+        --card:rgba(255,255,255,.035);
+        --border:rgba(255,255,255,.11);
+        --ok:#22c55e;
+        --bad:#ef4444;
+        --warn:#f59e0b;
+        --accent:#fb923c;
+      }
+      html,body{height:100%; margin:0; overflow:auto; background:radial-gradient(1200px 600px at 20% 0%, rgba(251,146,60,.14), transparent 60%), var(--bg); color:var(--fg); font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;}
       a{color:#93c5fd}
-      .wrap{max-width:980px; margin:0 auto; padding:20px;}
-      .row{display:grid; grid-template-columns:1fr; gap:12px;}
-      @media(min-width:900px){.row{grid-template-columns:1fr 1fr}}
-      .card{background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.10); border-radius:14px; padding:14px 14px;}
-      h1{margin:0 0 8px 0; font-size:20px}
-      .sub{color:var(--mut); font-size:13px}
+      .wrap{max-width:1060px; margin:0 auto; padding:20px;}
+      h1{margin:0; font-size:22px}
+      .sub{color:var(--mut); font-size:13px; margin-top:6px; display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+      .row{display:grid; grid-template-columns:1fr; gap:12px; margin-top:14px;}
+      @media(min-width:980px){.row{grid-template-columns:1fr 1fr}}
+      .card{background:var(--card); border:1px solid var(--border); border-radius:16px; padding:14px 14px;}
+      .title{display:flex; justify-content:space-between; align-items:baseline; gap:10px; margin-bottom:10px}
+      .title b{font-size:14px}
       .k{color:var(--mut)}
-      .pill{display:inline-block; padding:2px 8px; border:1px solid rgba(255,255,255,.14); border-radius:999px; margin-right:6px; font-size:12px}
-      pre{white-space:pre-wrap; word-break:break-word; background:rgba(0,0,0,.25); padding:10px; border-radius:10px; border:1px solid rgba(255,255,255,.08)}
-      .ok{color:var(--ok)} .bad{color:var(--bad)} .warn{color:var(--warn)}
+      .grid2{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+      .stat{padding:10px; border:1px solid rgba(255,255,255,.08); border-radius:14px; background:rgba(0,0,0,.18)}
+      .stat .label{color:var(--mut); font-size:12px}
+      .stat .value{font-size:18px; margin-top:4px}
+      .pill{display:inline-block; padding:3px 9px; border:1px solid rgba(255,255,255,.14); border-radius:999px; margin-right:6px; font-size:12px}
+      .bar{height:10px; border-radius:999px; background:rgba(255,255,255,.08); overflow:hidden; border:1px solid rgba(255,255,255,.10)}
+      .bar > div{height:100%; background:linear-gradient(90deg, rgba(34,197,94,.95), rgba(251,146,60,.95)); width:0%}
+      pre{white-space:pre-wrap; word-break:break-word; background:rgba(0,0,0,.25); padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,.08)}
       button{background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14); color:var(--fg); padding:6px 10px; border-radius:10px; cursor:pointer}
+      code{color:#cbd5e1}
     </style>
-    <script type="module" crossorigin src="/naranbot-dashboard-pages/assets/index-HnG9wo0J.js"></script>
+    <script type="module" crossorigin src="/naranbot-dashboard-pages/assets/index-D5_GHwQW.js"></script>
   </head>
   <body>
     <div class="wrap">
       <h1>Naranbot Dashboard</h1>
-      <div class="sub">Actualiza leyendo <code>status.json</code> (generado por tu máquina). <button id="btn">Actualizar</button></div>
-
-      <div style="height:10px"></div>
+      <div class="sub">
+        <span>Estado y consumo (oauth/ChatGPT).</span>
+        <span class="k">Se actualiza cada 5 min.</span>
+        <button id="btn">Actualizar</button>
+      </div>
 
       <div class="row">
         <div class="card">
-          <div class="pill">Gateway: <span id="gateway">…</span></div>
-          <div class="pill">Versión: <span id="version">…</span></div>
-          <div class="pill">Modelo: <span id="model">…</span></div>
-          <div style="margin-top:8px" class="k">Última actualización: <span id="updated">…</span></div>
-          <div style="margin-top:8px" class="k">Notas: Este panel no puede ver “uso exacto por modelo” de ChatGPT (oauth). Muestra métricas del gateway y contadores locales.</div>
+          <div class="title"><b>Estado</b><span class="k" id="updated">…</span></div>
+          <div class="grid2">
+            <div class="stat"><div class="label">Gateway</div><div class="value" id="gateway">…</div></div>
+            <div class="stat"><div class="label">Versión</div><div class="value" id="version">…</div></div>
+            <div class="stat"><div class="label">Modelo</div><div class="value" id="model">…</div></div>
+            <div class="stat"><div class="label">Auth</div><div class="value">oauth</div></div>
+          </div>
         </div>
 
         <div class="card">
+          <div class="title"><b>Consumo (sesión)</b><span class="k">context window</span></div>
+          <div class="stat">
+            <div class="label">% del contexto usado</div>
+            <div class="value"><span id="pct">…</span>%</div>
+            <div class="bar"><div id="pctBar"></div></div>
+            <div class="k" style="margin-top:8px">Total tokens (contexto): <span id="total">…</span> · Restante: <span id="remain">…</span></div>
+            <div class="k">Último intercambio (in/out): <span id="lastio">…</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="title"><b>Actividad</b><span class="k">contadores (pendiente)</span></div>
           <div class="pill">Mensajes hoy (aprox): <span id="msgs">…</span></div>
           <div class="pill">Ticks light hoy: <span id="light">…</span></div>
           <div class="pill">Ticks smart hoy: <span id="smart">…</span></div>
-          <div style="margin-top:8px" class="k">Alertas: <span id="alerts">…</span></div>
+          <div style="margin-top:10px" class="k">Alertas: <span id="alerts">…</span></div>
         </div>
 
         <div class="card">
-          <div><b>Repos</b></div>
+          <div class="title"><b>Repos</b><span class="k">links</span></div>
           <ul id="repos"></ul>
         </div>
 
         <div class="card">
-          <div><b>Historial</b> <span class="k">(últimos puntos)</span></div>
+          <div class="title"><b>Historial</b><span class="k">últimos puntos</span></div>
           <pre id="hist">Cargando…</pre>
         </div>
 
         <div class="card">
-          <div><b>Últimos eventos</b> <span class="k">(máx 30)</span></div>
+          <div class="title"><b>Eventos</b><span class="k">máx 30</span></div>
           <pre id="events">Cargando…</pre>
         </div>
       </div>
