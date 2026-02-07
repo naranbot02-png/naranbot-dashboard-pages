@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-07T14:55:49+00:00",
+  "updatedAt": "2026-02-07T15:10:13+00:00",
   "gateway": {
     "status": "ok",
     "version": "2026.2.3-1"
@@ -10,13 +10,13 @@
   },
   "usage": {
     "contextTokens": 400000,
-    "totalTokens": 171635,
-    "remainingTokens": 228365,
-    "percentUsed": 43,
-    "lastInputTokens": 243,
-    "lastOutputTokens": 224,
+    "totalTokens": 175971,
+    "remainingTokens": 224029,
+    "percentUsed": 44,
+    "lastInputTokens": 227,
+    "lastOutputTokens": 300,
     "sessionKey": "agent:main:main",
-    "sessionUpdatedAt": 1770476058141
+    "sessionUpdatedAt": 1770476836292
   },
   "counters": {
     "messagesToday": null,
@@ -38,7 +38,7 @@
   ],
   "events": [
     {
-      "ts": "2026-02-07T14:55:49+00:00",
+      "ts": "2026-02-07T15:10:13+00:00",
       "kind": "status",
       "msg": "Updated from openclaw status --usage --json"
     }

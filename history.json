@@ -7,5 +7,14 @@
     "remainingTokens": 228365,
     "lastInputTokens": 243,
     "lastOutputTokens": 224
+  },
+  {
+    "ts": "2026-02-07T15:10:13+00:00",
+    "model": "gpt-5.2",
+    "percentUsed": 44,
+    "totalTokens": 175971,
+    "remainingTokens": 224029,
+    "lastInputTokens": 227,
+    "lastOutputTokens": 300
   }
 ]
