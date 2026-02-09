@@ -1,27 +1,27 @@
 {
-  "updatedAt": "2026-02-07T15:10:13+00:00",
+  "updatedAt": "2026-02-09T17:05:34+00:00",
   "gateway": {
     "status": "ok",
-    "version": "2026.2.3-1"
+    "version": "2026.2.6-3"
   },
   "model": {
-    "current": "gpt-5.2",
+    "current": "gpt-5.3-codex",
     "auth": "oauth"
   },
   "usage": {
-    "contextTokens": 400000,
-    "totalTokens": 175971,
-    "remainingTokens": 224029,
-    "percentUsed": 44,
-    "lastInputTokens": 227,
-    "lastOutputTokens": 300,
+    "contextTokens": 272000,
+    "totalTokens": 66217,
+    "remainingTokens": 205783,
+    "percentUsed": 24,
+    "lastInputTokens": 169,
+    "lastOutputTokens": 267,
     "sessionKey": "agent:main:main",
-    "sessionUpdatedAt": 1770476836292
+    "sessionUpdatedAt": 1770656702767
   },
   "counters": {
-    "messagesToday": null,
-    "tickLightToday": null,
-    "tickSmartToday": null
+    "messagesToday": 4,
+    "tickLightToday": 2,
+    "tickSmartToday": 1
   },
   "alerts": [],
   "repos": [
@@ -38,7 +38,7 @@
   ],
   "events": [
     {
-      "ts": "2026-02-07T15:10:13+00:00",
+      "ts": "2026-02-09T17:05:34+00:00",
       "kind": "status",
       "msg": "Updated from openclaw status --usage --json"
     }

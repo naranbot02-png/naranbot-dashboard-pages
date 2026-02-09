@@ -16,5 +16,41 @@
     "remainingTokens": 224029,
     "lastInputTokens": 227,
     "lastOutputTokens": 300
+  },
+  {
+    "ts": "2026-02-09T17:02:29+00:00",
+    "model": "gpt-5.3-codex",
+    "percentUsed": 22,
+    "totalTokens": 60191,
+    "remainingTokens": 211809,
+    "lastInputTokens": 55583,
+    "lastOutputTokens": 250
+  },
+  {
+    "ts": "2026-02-09T17:02:55+00:00",
+    "model": "gpt-5.3-codex",
+    "percentUsed": 22,
+    "totalTokens": 60191,
+    "remainingTokens": 211809,
+    "lastInputTokens": 55583,
+    "lastOutputTokens": 250
+  },
+  {
+    "ts": "2026-02-09T17:04:14+00:00",
+    "model": "gpt-5.3-codex",
+    "percentUsed": 24,
+    "totalTokens": 65859,
+    "remainingTokens": 206141,
+    "lastInputTokens": 195,
+    "lastOutputTokens": 117
+  },
+  {
+    "ts": "2026-02-09T17:05:34+00:00",
+    "model": "gpt-5.3-codex",
+    "percentUsed": 24,
+    "totalTokens": 66217,
+    "remainingTokens": 205783,
+    "lastInputTokens": 169,
+    "lastOutputTokens": 267
   }
 ]
